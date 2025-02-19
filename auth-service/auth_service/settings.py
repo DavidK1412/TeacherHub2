@@ -99,6 +99,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'auth_service.wsgi.application'
 
+print('--------------------------')
+print(os.getenv('DB_NAME'))
+print(os.getenv('DB_USER'))
+print(os.getenv('DB_PASSWORD'))
+print(os.getenv('DB_HOST'))
+print(os.getenv('DB_PORT'))
+print('--------------------------')
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
