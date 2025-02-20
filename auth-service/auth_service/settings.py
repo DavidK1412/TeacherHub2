@@ -35,10 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 load_dotenv()
 
-STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Application definition
 
@@ -49,10 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',  # Opcional, mejora la gestión de estáticos en desarrollo
+    'users',
     'rest_framework',
     'rest_framework_simplejwt',
-    'users',
-    'whitenoise.runserver_nostatic',  # Opcional, mejora la gestión de estáticos en desarrollo
 ]
 
 MIDDLEWARE = [
@@ -101,15 +98,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'auth_service.wsgi.application'
-
-print('--------------------------')
-print(os.getenv('DB_NAME'))
-print(os.getenv('DB_USER'))
-print(os.getenv('DB_PASSWORD'))
-print(os.getenv('DB_HOST'))
-print(os.getenv('DB_PORT'))
-print('--------------------------')
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -162,3 +150,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'auth_service/static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+ALLOWED_HOSTS = ['*']
