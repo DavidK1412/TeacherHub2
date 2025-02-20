@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'users'
+    'users',
+    'whitenoise.runserver_nostatic',  # Opcional, mejora la gestión de estáticos en desarrollo
 ]
 
 MIDDLEWARE = [
